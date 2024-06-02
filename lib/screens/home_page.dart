@@ -100,9 +100,8 @@ class _HomePageState extends State<HomePage> {
               shrinkWrap: true,
               itemCount: _notes.length,
               itemBuilder: (context, index) {
-                String notePreview = _notes[index].length > 20
-                    ? _notes[index].substring(0, 30)
-                    : _notes[index];
+                String notePreview =
+                    _notes[index].length > 20 ? _notes[index] : _notes[index];
 
                 return GestureDetector(
                   onTap: () {
@@ -111,6 +110,7 @@ class _HomePageState extends State<HomePage> {
                   child: Slidable(
                     key: Key(_notes[index]),
                     startActionPane: ActionPane(
+                        extentRatio: 0.2,
                         motion: const StretchMotion(),
                         dragDismissible: true,
                         children: [
@@ -126,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                           )
                         ]),
                     endActionPane: ActionPane(
+                      extentRatio: 0.4,
                       dragDismissible: true,
                       motion: const StretchMotion(),
                       children: [
@@ -136,7 +137,6 @@ class _HomePageState extends State<HomePage> {
                           backgroundColor: Colors.red,
                           foregroundColor: Colors.white,
                           icon: Icons.delete,
-                          label: 'Delete',
                           autoClose: true,
                           borderRadius: BorderRadius.circular(3),
                         ),
@@ -148,7 +148,6 @@ class _HomePageState extends State<HomePage> {
                           backgroundColor: textButtonColor,
                           foregroundColor: Colors.white,
                           icon: Icons.edit,
-                          label: 'Edit',
                           autoClose: true,
                           borderRadius: BorderRadius.circular(3),
                         ),

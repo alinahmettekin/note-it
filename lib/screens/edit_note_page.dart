@@ -49,7 +49,7 @@ class _EditNotePageState extends State<EditNotePage> {
                 widget.index,
                 _textController.text,
               );
-              Navigator.of(context).pop();
+              Navigator.pop(context);
             },
             style:
                 ButtonStyle(iconColor: WidgetStateProperty.all(appNameColor)),

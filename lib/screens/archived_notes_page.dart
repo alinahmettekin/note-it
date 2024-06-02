@@ -99,13 +99,29 @@ class _ArchivedNotesPageState extends State<ArchivedNotesPage> {
         itemCount: _archivedNotes.length,
         itemBuilder: (context, index) {
           String notePreview = _archivedNotes[index].length > 20
-              ? _archivedNotes[index].substring(0, 30)
+              ? _archivedNotes[index]
               : _archivedNotes[index];
 
           return GestureDetector(
             child: Slidable(
                 key: Key(_archivedNotes[index]),
+                startActionPane: ActionPane(
+                    extentRatio: 0.2,
+                    motion: const StretchMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (context) {
+                          _removeFromArchive(_archivedNotes[index], index);
+                        },
+                        backgroundColor: Colors.grey,
+                        foregroundColor: Colors.white,
+                        icon: Icons.archive,
+                        autoClose: true,
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    ]),
                 endActionPane: ActionPane(
+                  extentRatio: 0.4,
                   motion: const StretchMotion(),
                   children: [
                     SlidableAction(
@@ -115,7 +131,6 @@ class _ArchivedNotesPageState extends State<ArchivedNotesPage> {
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
                       icon: Icons.delete,
-                      label: 'Delete',
                       autoClose: true,
                       borderRadius: BorderRadius.circular(3),
                     ),
@@ -127,18 +142,6 @@ class _ArchivedNotesPageState extends State<ArchivedNotesPage> {
                       backgroundColor: textButtonColor,
                       foregroundColor: Colors.white,
                       icon: Icons.edit,
-                      label: 'Edit',
-                      autoClose: true,
-                      borderRadius: BorderRadius.circular(3),
-                    ),
-                    SlidableAction(
-                      onPressed: (context) {
-                        _removeFromArchive(_archivedNotes[index], index);
-                      },
-                      backgroundColor: textButtonColor,
-                      foregroundColor: Colors.white,
-                      icon: Icons.edit,
-                      label: 'Remove from Archive',
                       autoClose: true,
                       borderRadius: BorderRadius.circular(3),
                     ),
