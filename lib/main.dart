@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noteapp/screens/home_page.dart';
 
 void main() {
   runApp(
@@ -8,4 +7,13 @@ void main() {
       home: HomePage(),
     ),
   );
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
 }
